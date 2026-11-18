@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer"><meta name="robots" content="noindex">
+<title>Instagram verbinden – Content Studio</title>
+<style>body{font-family:system-ui,sans-serif;max-width:620px;margin:40px auto;padding:0 16px;line-height:1.6;color:#16181d}code{background:#f1f2f4;padding:2px 6px;border-radius:5px;word-break:break-all}a{color:#c62828}</style></head>
+<body>
+<h1>Instagram verbinden</h1>
+<p id="t">Du wirst zurück zum Content Studio auf deinem Mac geleitet …</p>
+<p class="small">Klappt das nicht? Läuft das Studio? Dann <a id="l" href="#">hier klicken</a> oder die Adresse dieser Seite kopieren und im Studio unter Konten → Instagram → „Anmeldung hängt?“ einfügen.</p>
+<p><small>This page only forwards the sign-in result to the Content Studio app running on your own computer (127.0.0.1). Nothing is stored or sent anywhere else.</small></p>
+<script>
+  // Reicht ?code=…&state=… an das lokale Studio weiter. Der Code ist ohne das App-Secret (liegt nur auf dem Mac) wertlos.
+  var target = "http://127.0.0.1:8765/oauth/callback/instagram" + location.search;
+  document.getElementById("l").href = target;
+  if (location.search.indexOf("code=") < 0 && location.search.indexOf("error") < 0) {
+    document.getElementById("t").textContent = "Diese Seite wird nur bei der Anmeldung aus dem Content Studio gebraucht.";
+  } else {
+    location.replace(target);
+  }
+</script>
+</body></html>
